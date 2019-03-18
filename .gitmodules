@@ -1,0 +1,4 @@
+[submodule "common/.config/zsh/zplug"]
+	path = common/.config/zsh/zplug
+	url = https://github.com/zplug/zplug.git
+	branch = master
