@@ -1,11 +1,6 @@
 #!/usr/bin/env bash
 
-if [[ "$OSTYPE" =~ ^darwin ]]; then
-  alias ls='gls --group-directories-first --color=auto '
-else
-  alias ls='ls --group-directories-first --color=auto '
-fi
-
+alias ls='ls --group-directories-first --color=auto '
 alias l='ls -lAh'
 alias ll='ls -lh'
 
