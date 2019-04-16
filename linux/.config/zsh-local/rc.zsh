@@ -32,9 +32,10 @@ arch_maintenance() {
     echo "Updating archlinux packages..."
     yay -Syyu
 
-    echo "Cleaning arch package stuff..."
-    yay -Yc
-    sudo paccache -r
+    # echo "Cleaning arch package stuff..."
+    # yay -Yc
+    # sudo paccache -r
+
     local frag=$(sudo xfs_db -c frag -r "$MAINT_XFS_DISK" | head -1 | cut -d ' ' -f 7 | sed 's/%//g')
     if (( $frag > $MAINT_MAX_FRAGMENTATION )); then
         echo -n "Disk fragmentation is greater than max ($MAINT_MAX_FRAGMENTATION%), performing defrag..."
@@ -48,6 +49,4 @@ arch_maintenance() {
     echo -n "Remove uwanted and temporary files..."
     remove_unwanted_files()
     echo "Done."
-
-
 }
