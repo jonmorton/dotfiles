@@ -12,3 +12,7 @@ alias gd='git diff'
 dif() {
     git diff --no-index --color $1 $2 | diff-so-fancy
 }
+
+pip-upgrade-all() {
+    pip list --outdated --format=freeze | grep -v '^\-e' | cut -d = -f 1 | xargs -n1 pip install -U
+}
