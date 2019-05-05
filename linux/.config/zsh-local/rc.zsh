@@ -1,5 +1,7 @@
 export BROWSER='xdg-open'
 
+export PATH="$PATH:/home/jon/.poetry/bin"
+
 MAINT_XFS_DISK="/dev/disk/by-uuid/792dbfd5-315a-4279-9785-ba8261cc91b1"
 MAINT_MAX_FRAGMENTATION=5.00
 MAINT_REMOVE_FILES=(
@@ -11,7 +13,6 @@ MAINT_REMOVE_FILES=(
     "$HOME/.npm"
     "$HOME/.java"
     "$HOME/.viminfo"
-    "$HOME/.python_history"
     "$HOME/.cache"/event-sound-cache*
     "$HOME/.cache/fsh"
 )
@@ -35,6 +36,9 @@ arch_maintenance() {
     # echo "Cleaning arch package stuff..."
     # yay -Yc
     # sudo paccache -r
+
+    echo "Updating zsh packages"
+    zplug update
 
     local frag=$(sudo xfs_db -c frag -r "$MAINT_XFS_DISK" | head -1 | cut -d ' ' -f 7 | sed 's/%//g')
     if (( $frag > $MAINT_MAX_FRAGMENTATION )); then
