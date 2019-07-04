@@ -15,6 +15,7 @@ MAINT_REMOVE_FILES=(
     "$HOME/.viminfo"
     "$HOME/.cache"/event-sound-cache*
     "$HOME/.cache/fsh"
+    "$HOME/.pylint.d"
 )
 
 remove_unwanted_files() {
@@ -54,4 +55,11 @@ arch_maintenance() {
     remove_unwanted_files()
     echo "Done."
 }
+
+docker_clean() {
+	docker rm $(docker ps -a -q)
+	docker rmi $(docker images -q) -f
+	docker volume rm $(docker volume ls -q) -f
+}
+
 [ -f /opt/miniconda3/etc/profile.d/conda.sh ] && source /opt/miniconda3/etc/profile.d/conda.sh
