@@ -5,8 +5,8 @@ source $ZDOTDIR/zplug/init.zsh
 
 export ZSH_AUTOSUGGEST_USE_ASYNC=1
 
-zplug "mafredri/zsh-async"
-zplug "sindresorhus/pure"
+zplug mafredri/zsh-async, from:github
+zplug sindresorhus/pure, use:pure.zsh, from:github, as:theme
 
 zplug "zsh-users/zsh-autosuggestions", defer:1
 zplug "zdharma/fast-syntax-highlighting", defer:2
@@ -28,3 +28,4 @@ if ! zplug check --verbose; then
 fi
 
 zplug load
+
