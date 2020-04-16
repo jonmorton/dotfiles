@@ -1,5 +1,5 @@
 autoload -U compinit
-compinit -u -d "${XDG_CACHE_HOME}/zcompdump"
+compinit -d "${XDG_CACHE_HOME}/zcompdump"
 
 # If a completion is performed with the cursor within a word, and a full completion is inserted,
 # the cursor is moved to the end of the word
@@ -15,19 +15,20 @@ setopt AUTO_LIST
 setopt PATH_DIRS
 
 # Make globbing (filename generation) sensitive to case.
-setopt no_case_glob
-setopt extended_glob
+setopt CASE_GLOB
 
-setopt auto_remove_slash
+setopt AUTO_REMOVE_SLASH
 
 # On an ambiguous completion, instead of listing possibilities or beeping, insert the first match immediately.
 # Then when completion is requested again, remove the first match and insert the second match, etc.
-unsetopt menu_complete
+unsetopt MENU_COMPLETE
 
-unsetopt beep
-unsetopt hist_beep
-unsetopt list_beep
-unsetopt flowcontrol
+# No beeps.
+unsetopt BEEP
+unsetopt HIST_BEEP
+unsetopt LIST_BEEP
+
+unsetopt FLOWCONTROL
 
 # Enable caching
 zstyle ':completion::complete:*' use-cache 1
@@ -49,16 +50,16 @@ zstyle ':completion:*' verbose yes
 zstyle ':completion:*' matcher-list 'm:{a-zA-Z}={A-Za-z}' 'r:|[._-]=* r:|=*' 'l:|=* r:|=*'
 
 # directories
-zstyle ':completion:*:default' list-colors ${(s.:.)LS_COLORS}
+zstyle ':completion:*:default' list-colors ''
 zstyle ':completion:*:*:cd:*' tag-order local-directories directory-stack path-directories
 zstyle ':completion:*:*:cd:*:directory-stack' menu yes select
 zstyle ':completion:*:-tilde-:*' group-order 'named-directories' 'path-directories' 'expand'
 zstyle ':completion:*' squeeze-slashes true
 
 # Fuzzy match mistyped completions.
-zstyle ':completion:*' completer _complete _match _prefix _approximate _history
-zstyle ':completion:*:match:*' original only
-zstyle ':completion:*:approximate:*' max-errors 1 numeric
+# zstyle ':completion:*' completer _complete _match _prefix _approximate _history
+# zstyle ':completion:*:match:*' original only
+# zstyle ':completion:*:approximate:*' max-errors 1 numeric
 
 # Increase the number of errors based on the length of the typed word. But make
 # sure to cap (at 7) the max-errors to avoid hanging.
@@ -70,19 +71,15 @@ zstyle ':completion:*:functions' ignored-patterns '(_*|pre(cmd|exec)|prompt_*)'
 # completion sorting
 zstyle ':completion:*:*:-subscript-:*' tag-order indexes parameters
 
-# Man
-zstyle ':completion:*:manuals' separate-sections true
-zstyle ':completion:*:manuals.(^1*)' insert-sections true
-
 # history
-zstyle ':completion:*:history-words' stop yes
-zstyle ':completion:*:history-words' remove-all-dups yes
-zstyle ':completion:*:history-words' list false
-zstyle ':completion:*:history-words' menu yes
+# zstyle ':completion:*:history-words' stop yes
+# zstyle ':completion:*:history-words' remove-all-dups yes
+# zstyle ':completion:*:history-words' list false
+# zstyle ':completion:*:history-words' menu yes
 
 # ignore multiple entries.
-zstyle ':completion:*:(rm|kill|diff):*' ignore-line other
-zstyle ':completion:*:rm:*' file-patterns '*:all-files'
+# zstyle ':completion:*:(rm|kill|diff):*' ignore-line other
+# zstyle ':completion:*:rm:*' file-patterns '*:all-files'
 
 # smart editor completion
 zstyle ':completion:*:(nano|vim|nvim|vi|emacs|e):*' ignored-patterns '*.(wav|mp3|flac|ogg|mp4|avi|mkv|webm|iso|dmg|so|o|a|bin|exe|dll|pcap|7z|zip|tar|gz|bz2|rar|deb|pkg|gzip|pdf|mobi|epub|png|jpeg|jpg|gif)'
