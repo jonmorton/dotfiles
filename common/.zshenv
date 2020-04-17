@@ -24,3 +24,4 @@ export LESS='-F -g -i -M -R -S -w -X -z-4'
 export GNUPGHOME=$XDG_CONFIG_HOME/gnupg
 export LESSHISTFILE="-"
 
+export PYTHONCACHEPREFIX="$XDG_CACHE_HOME/pycache"
