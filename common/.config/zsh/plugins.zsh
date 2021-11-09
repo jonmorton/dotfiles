@@ -9,12 +9,10 @@ zplug mafredri/zsh-async, from:github
 zplug sindresorhus/pure, use:pure.zsh, from:github, at:main, as:theme
 
 zplug "zsh-users/zsh-autosuggestions", defer:1
-zplug "zdharma/fast-syntax-highlighting", defer:2
+zplug "zdharma-continuum/fast-syntax-highlighting", defer:2
 zplug "zsh-users/zsh-history-substring-search", defer:3
 
 zplug "zsh-users/zsh-completions", lazy:true, use:'src/_*'
-
-zplug "plugins/extract", from:oh-my-zsh  # Extracting utility
 
 # zplug "jhawthorn/fzy", as:command, from:gh-r, as:command, rename-to:fzy, hook-build:"make", lazy:true
 
