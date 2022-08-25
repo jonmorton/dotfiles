@@ -12,3 +12,5 @@ export LS_COLORS='di=34:ln=35:so=32:pi=33:ex=31:bd=36;01:cd=33;01:su=31;40;07:sg
 if [[ -f "$XDG_CONFIG_HOME/zsh-local/rc.zsh" ]]; then
   source $XDG_CONFIG_HOME/zsh-local/rc.zsh
 fi
+
+export PATH=$PATH:$HOME/bin
